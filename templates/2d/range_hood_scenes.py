@@ -6,20 +6,15 @@ import math
 import random
 from typing import Callable
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
+
+from pipeline.fonts import load_cjk_font as _font
 
 PAPER=(248,245,238); WALL=(242,238,230); FLOOR=(218,214,206); INK=(38,36,34); MUTED=(110,105,98)
 ACCENT=(180,75,45); AIR=(70,130,175); AIR_LT=(170,205,230); HOT=(195,90,55); LINE=(180,175,168)
 WHITE=(252,250,246); METAL=(168,172,178); METAL_DK=(105,110,118); BODY=(55,58,64); BODY_LT=(90,95,105)
 OIL=(140,110,60); OIL_LT=(190,160,100); GREEN=(80,160,110); HOT_LT=(240,190,150)
 
-
-def _font(size, bold=False):
-    paths=[r"C:\Windows\Fonts\msyhbd.ttc",r"C:\Windows\Fonts\msyh.ttc"] if bold else [r"C:\Windows\Fonts\msyh.ttc",r"C:\Windows\Fonts\msyhbd.ttc"]
-    for p in paths:
-        try: return ImageFont.truetype(p,size=size)
-        except OSError: continue
-    return ImageFont.load_default()
 
 FONT_HERO,FONT_L,FONT_M,FONT_S,FONT_XS=_font(62,True),_font(44,True),_font(34),_font(28),_font(24)
 def _clamp01(t): return max(0.0,min(1.0,t))

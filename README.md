@@ -29,7 +29,7 @@ winget install --id Gyan.FFmpeg -e
 ```
 
 安装后**重新打开终端**，或把 `ffmpeg.exe` 所在目录加入 PATH。  
-若不在 PATH，编辑 `config.yaml`：
+Linux 一般已在 PATH 中（`ffmpeg` / `ffprobe`）。若不在 PATH，编辑 `config.yaml`：
 
 ```yaml
 paths:
@@ -43,7 +43,17 @@ paths:
 
 `D:\副业\tools\blender-4.5\blender.exe`
 
-路径已写入 `config.yaml` 的 `paths.blender`。若你重装/换机，请改成新的 `blender.exe` 绝对路径。
+路径已写入 `config.yaml` 的 `paths.blender`。若你重装/换机，请改成新的 `blender.exe` 绝对路径。该路径在当前系统不存在时，会自动改找 PATH 里的 `blender`。
+
+**2D 出片不需要 Blender。** Linux 上安装中文字体后再跑 2D，例如：
+
+```bash
+sudo apt install fonts-noto-cjk ffmpeg
+python -m pip install -r requirements.txt
+python -m pipeline.run_episode --id 001-air-conditioner --mode 2d
+```
+
+画面字体按「微软雅黑 → Noto Sans CJK → DejaVu」查找。没有雅黑时，字幕族名会改成本机的 Noto Sans CJK SC。
 
 也可自行安装：https://www.blender.org/download/ （国内若官方 403，可用 Microsoft Store「Blender 4.5 LTS」）。
 

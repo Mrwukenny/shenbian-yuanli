@@ -13,6 +13,9 @@ from pipeline.utils import ROOT
 
 
 def _load_drawer(module_name: str = "ac_scenes") -> Callable:
+    root = str(ROOT)
+    if root not in sys.path:
+        sys.path.insert(0, root)
     templates = str(ROOT / "templates" / "2d")
     if templates not in sys.path:
         sys.path.insert(0, templates)

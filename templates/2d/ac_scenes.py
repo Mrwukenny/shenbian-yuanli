@@ -6,7 +6,9 @@ import math
 import random
 from typing import Callable
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
+
+from pipeline.fonts import load_cjk_font as _font
 
 PAPER = (248, 245, 238)
 WALL = (242, 238, 230)
@@ -27,20 +29,6 @@ SKIN = (235, 200, 170)
 SHIRT = (140, 155, 175)
 SOFA = (175, 178, 182)
 GREEN = (80, 160, 110)
-
-
-def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
-    paths = (
-        [r"C:\Windows\Fonts\msyhbd.ttc", r"C:\Windows\Fonts\msyh.ttc"]
-        if bold
-        else [r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\msyhbd.ttc"]
-    )
-    for path in paths:
-        try:
-            return ImageFont.truetype(path, size=size)
-        except OSError:
-            continue
-    return ImageFont.load_default()
 
 
 FONT_HERO = _font(62, bold=True)

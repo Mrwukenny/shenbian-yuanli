@@ -13,9 +13,12 @@ audio:
   gap_ms: 280
 
 paths:
+  # 仅 3D 模式需要。本机没有这个 Windows 路径时，会改用 PATH 里的 blender；找不到也不影响 2D。
   blender: "D:/副业/视频/tools/blender-4.5/blender.exe"
+  # 命令名即可，Linux / Windows 都走 PATH。也可写成绝对路径。
   ffmpeg: ffmpeg
   ffprobe: ffprobe
+  # 参考片目录，流水线不读取；目录不存在不影响出片。
   reference_video: "D:/副业/视频/assets/example"
 
 subtitle:
@@ -24,6 +27,7 @@ subtitle:
   margin_l: 80
   margin_r: 80
   max_chars_per_line: 13
+  # 已安装则沿用；Linux 上没有雅黑时，字幕改用 Noto Sans CJK（或其它已解析到的中文字体）。
   font_name: Microsoft YaHei
   primary_color: "&H00FFFFFF"
   outline_color: "&H00000000"
