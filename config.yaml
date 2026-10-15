@@ -1,0 +1,36 @@
+# 科普视频流水线全局配置
+video:
+  width: 1080
+  height: 1920
+  fps: 24
+  render_mode: 2d
+  blender_engine: BLENDER_EEVEE_NEXT
+
+audio:
+  voice: zh-CN-YunjianNeural
+  rate: "+0%"
+  volume: "+0%"
+  gap_ms: 280
+
+paths:
+  blender: "D:/副业/视频/tools/blender-4.5/blender.exe"
+  ffmpeg: ffmpeg
+  ffprobe: ffprobe
+  reference_video: "D:/副业/视频/assets/example"
+
+subtitle:
+  font_size: 34
+  margin_v: 240
+  margin_l: 80
+  margin_r: 80
+  max_chars_per_line: 13
+  font_name: Microsoft YaHei
+  primary_color: "&H00FFFFFF"
+  outline_color: "&H00000000"
+  outline: 2.2
+  shadow: 0
+  border_style: 1
+
+series:
+  name: 身边原理
+  tagline: 拆开日常，看懂原理
