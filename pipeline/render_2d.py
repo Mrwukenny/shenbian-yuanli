@@ -90,7 +90,16 @@ def render_scene_clip_2d(
         proc.kill()
         raise
     finally:
-        proc.stdin.close()
+        # 先关掉真正的管道送出 EOF。再把 Popen.stdin 置空，
+        # 否则 communicate() 会对已关闭的缓冲再 flush，抛出
+        # ValueError: flush of closed file，把已经写完的片段判失败。
+        stdin = proc.stdin
+        proc.stdin = None
+        if stdin is not None and not stdin.closed:
+            try:
+                stdin.close()
+            except (BrokenPipeError, ValueError):
+                pass
     _stdout, stderr = proc.communicate()
     if proc.returncode != 0:
         err = (stderr or b"").decode("utf-8", errors="replace")
