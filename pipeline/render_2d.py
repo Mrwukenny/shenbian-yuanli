@@ -9,7 +9,10 @@ import sys
 from pathlib import Path
 from typing import Any, Callable
 
+from pipeline.drawstyle import install as install_drawstyle
 from pipeline.utils import ROOT
+
+install_drawstyle()
 
 
 def _load_drawer(module_name: str = "ac_scenes") -> Callable:
