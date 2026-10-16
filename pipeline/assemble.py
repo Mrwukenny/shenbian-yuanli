@@ -6,6 +6,12 @@ from pathlib import Path
 from typing import Any
 
 from pipeline.cmd import run_cmd
+from pipeline.fonts import cjk_font_dir, resolve_ass_font_name
+
+
+def _filter_path(path: Path) -> str:
+    """FFmpeg 滤镜参数里的路径：正斜杠，并转义盘符冒号。"""
+    return path.resolve().as_posix().replace(":", r"\:").replace("'", r"\'")
 
 
 def concat_videos(clips: list[Path], out_path: Path, *, ffmpeg: str = "ffmpeg") -> Path:
@@ -65,11 +71,13 @@ def mux_audio_subtitles(
 
     # 优先烧 ASS（含正确 PlayRes）；否则回退 SRT
     if ass_path and ass_path.exists():
-        ass_escaped = ass_path.resolve().as_posix().replace(":", "\\:")
-        vf = f"ass='{ass_escaped}'"
+        vf = f"ass='{_filter_path(ass_path)}'"
+        font_dir = cjk_font_dir()
+        if font_dir is not None:
+            vf += f":fontsdir='{_filter_path(font_dir)}'"
     else:
         sub = config.get("subtitle", {})
-        font_name = sub.get("font_name", "Microsoft YaHei")
+        font_name = resolve_ass_font_name(str(sub.get("font_name", "Microsoft YaHei")))
         font_size = int(sub.get("font_size", 36))
         # SRT 默认 PlayRes 约 384x288，MarginV 只能用小数值
         margin_v = 36
@@ -80,7 +88,7 @@ def mux_audio_subtitles(
         outline = int(sub.get("outline", 2))
         shadow = int(sub.get("shadow", 0))
         border_style = int(sub.get("border_style", 1))
-        srt_escaped = srt_path.resolve().as_posix().replace(":", "\\:")
+        srt_escaped = _filter_path(srt_path)
         force_style = (
             f"FontName={font_name},FontSize={font_size},PrimaryColour={primary},"
             f"OutlineColour={outline_c},Outline={outline},Shadow={shadow},"
@@ -88,6 +96,9 @@ def mux_audio_subtitles(
             f"Alignment=2,BorderStyle={border_style},WrapStyle=2"
         )
         vf = f"subtitles='{srt_escaped}':force_style='{force_style}'"
+        font_dir = cjk_font_dir()
+        if font_dir is not None:
+            vf += f":fontsdir='{_filter_path(font_dir)}'"
 
     cmd = [
         ffmpeg,

@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import math
-import random
 from typing import Callable
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
+
+from pipeline.drawstyle import draw_seated_host, paper_background
+from pipeline.fonts import load_cjk_font as _font
 
 PAPER = (248, 245, 238)
 WALL = (242, 238, 230)
@@ -27,20 +29,6 @@ SKIN = (235, 200, 170)
 SHIRT = (140, 155, 175)
 SOFA = (175, 178, 182)
 GREEN = (80, 160, 110)
-
-
-def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
-    paths = (
-        [r"C:\Windows\Fonts\msyhbd.ttc", r"C:\Windows\Fonts\msyh.ttc"]
-        if bold
-        else [r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\msyhbd.ttc"]
-    )
-    for path in paths:
-        try:
-            return ImageFont.truetype(path, size=size)
-        except OSError:
-            continue
-    return ImageFont.load_default()
 
 
 FONT_HERO = _font(62, bold=True)
@@ -103,24 +91,7 @@ def _cam_drift(time_sec: float, amp_x: float = 6.0, amp_y: float = 4.0) -> tuple
 
 
 def _paper_bg(w: int, h: int, seed: int = 7) -> Image.Image:
-    img = Image.new("RGB", (w, h), PAPER)
-    draw = ImageDraw.Draw(img)
-    draw.rectangle((0, 0, w, int(h * 0.62)), fill=WALL)
-    draw.rectangle((0, int(h * 0.62), w, h), fill=FLOOR)
-    draw.line((0, int(h * 0.62), w, int(h * 0.62)), fill=LINE, width=2)
-    draw.polygon(
-        [(0, 0), (int(w * 0.28), 0), (int(w * 0.22), int(h * 0.62)), (0, int(h * 0.62))],
-        fill=(250, 248, 242),
-    )
-    draw.line((int(w * 0.22), 0, int(w * 0.22), int(h * 0.62)), fill=LINE, width=1)
-    rng = random.Random(seed)
-    px = img.load()
-    for _ in range(int(w * h * 0.008)):
-        x, y = rng.randint(0, w - 1), rng.randint(0, h - 1)
-        r, g, b = px[x, y]
-        n = rng.randint(-5, 5)
-        px[x, y] = (max(0, min(255, r + n)), max(0, min(255, g + n)), max(0, min(255, b + n)))
-    return img
+    return paper_background(w, h, seed, PAPER, WALL, FLOOR, LINE)
 
 
 def _sketch_line(draw, p1, p2, color=INK, width=2, seed=0):
@@ -232,23 +203,20 @@ def _draw_fan(draw, cx, cy, R: float, time_sec: float, rpm: float = 3.5, blades:
 
 
 def _sofa_person(draw, cx: int, cy: int, time_sec: float = 0.0):
-    bob = math.sin(time_sec * 2.2) * 3
-    sw, sh = 320, 110
+    bob = math.sin(time_sec * 2.2) * 2
+    sw, sh = 360, 128
     x0, y0 = cx - sw // 2, cy - sh // 2 + bob
-    draw.rounded_rectangle((x0 + 3, y0 + 5, x0 + sw + 3, y0 + sh + 5), radius=12, fill=(160, 163, 168))
-    draw.rounded_rectangle((x0, y0, x0 + sw, y0 + sh), radius=12, fill=SOFA, outline=METAL_DK, width=2)
-    draw.rounded_rectangle((x0 + 8, y0 - 28, x0 + sw - 8, y0 + 8), radius=8, fill=SOFA, outline=METAL_DK, width=1)
-    px = cx - 30
-    draw.ellipse((px - 22, y0 - 70, px + 22, y0 - 26), fill=SKIN, outline=INK, width=1)
-    draw.rounded_rectangle((px - 28, y0 - 30, px + 28, y0 + 20), radius=8, fill=SHIRT, outline=INK, width=1)
-    # 扇动
-    ang = math.sin(time_sec * 8) * 0.55
-    fx = px + 42 + math.cos(ang) * 22
-    fy = y0 - 8 + math.sin(ang) * 14
-    _sketch_line(draw, (px + 36, y0 - 6), (fx, fy), MUTED, 3, 1)
-    # 舒服表情：眼睛弯
-    draw.arc((px - 12, y0 - 58, px - 4, y0 - 50), 0, 180, fill=INK, width=2)
-    draw.arc((px + 4, y0 - 58, px + 12, y0 - 50), 0, 180, fill=INK, width=2)
+    draw.rounded_rectangle((x0 + 18, y0 - 92, x0 + sw - 28, y0 + 22), radius=18, fill=(158, 162, 168), outline=INK, width=3)
+    draw.rounded_rectangle((x0, y0, x0 + sw, y0 + sh), radius=20, fill=SOFA, outline=INK, width=3)
+    draw_seated_host(
+        draw,
+        cx + 10,
+        y0 + 6,
+        time_sec,
+        skin=SKIN,
+        shirt=(86, 114, 146),
+        ink=INK,
+    )
 
 
 def _indoor(draw, cx, cy, w=440, h=130, time_sec=0.0, blow=0.0, cut=False, label=False, label_alpha=1.0):
@@ -256,8 +224,7 @@ def _indoor(draw, cx, cy, w=440, h=130, time_sec=0.0, blow=0.0, cut=False, label
     cx, cy = cx, cy
     w, h = w * pulse, h
     x0, y0 = cx - w / 2, cy - h / 2
-    draw.rounded_rectangle((x0 + 4, y0 + 6, x0 + w + 4, y0 + h + 6), radius=14, fill=(210, 206, 200))
-    draw.rounded_rectangle((x0, y0, x0 + w, y0 + h), radius=14, fill=WHITE, outline=METAL_DK, width=2)
+    draw.rounded_rectangle((x0, y0, x0 + w, y0 + h), radius=16, fill=WHITE, outline=INK, width=3)
     for i in range(6):
         draw.line((x0 + 36, y0 + 12 + i * 5, x0 + w - 36, y0 + 12 + i * 5), fill=LINE, width=1)
     draw.rounded_rectangle((x0 + 22, y0 + 48, x0 + w - 22, y0 + h - 14), radius=8, fill=(245, 243, 238), outline=LINE, width=1)
@@ -281,8 +248,7 @@ def _outdoor(draw, cx, cy, w=250, h=310, time_sec=0.0, cut=False, heat=0.0, labe
     shake = math.sin(time_sec * 14) * 2 * heat if heat > 0.3 else 0
     cx += shake
     x0, y0 = cx - w / 2, cy - h / 2
-    draw.rounded_rectangle((x0 + 3, y0 + 5, x0 + w + 3, y0 + h + 5), radius=10, fill=(200, 196, 190))
-    draw.rounded_rectangle((x0, y0, x0 + w, y0 + h), radius=10, fill=METAL, outline=METAL_DK, width=2)
+    draw.rounded_rectangle((x0, y0, x0 + w, y0 + h), radius=14, fill=METAL, outline=INK, width=3)
     fx, fy = cx, y0 + h * 0.36
     _draw_fan(draw, fx, fy, 58, time_sec, rpm=5.5)
     for i in range(14):

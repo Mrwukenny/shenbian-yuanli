@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -18,9 +19,40 @@ def load_yaml(path: Path) -> dict[str, Any]:
     return data
 
 
+def resolve_tool(configured: str | None, fallback: str) -> str:
+    """解析外部程序路径。
+
+    配置里的绝对路径存在就用它（Windows 上的 blender.exe 仍可用）。
+    路径在本机不存在时（例如 Linux 上看不到 D:/.../blender.exe），
+    回退到 PATH 中的同名命令。2D 模式不调用 blender。
+    """
+    raw = (configured or "").strip()
+    if not raw:
+        return shutil.which(fallback) or fallback
+    candidate = Path(raw)
+    if candidate.is_file():
+        return str(candidate)
+    # "ffmpeg" / "ffprobe" / "blender" 这类命令名
+    if candidate.parent == Path("."):
+        return shutil.which(raw) or raw
+    found = shutil.which(fallback)
+    return found or fallback
+
+
+def normalize_tool_paths(config: dict[str, Any]) -> dict[str, Any]:
+    paths = config.get("paths")
+    if not isinstance(paths, dict):
+        paths = {}
+        config["paths"] = paths
+    paths["ffmpeg"] = resolve_tool(str(paths.get("ffmpeg") or ""), "ffmpeg")
+    paths["ffprobe"] = resolve_tool(str(paths.get("ffprobe") or ""), "ffprobe")
+    paths["blender"] = resolve_tool(str(paths.get("blender") or ""), "blender")
+    return config
+
+
 def load_config(config_path: Path | None = None) -> dict[str, Any]:
     path = config_path or (ROOT / "config.yaml")
-    return load_yaml(path)
+    return normalize_tool_paths(load_yaml(path))
 
 
 def episode_dir(episode_id: str) -> Path:

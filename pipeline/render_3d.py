@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import shutil
 import sys
 from pathlib import Path
 from typing import Any
@@ -12,7 +13,13 @@ from pipeline.utils import ROOT
 
 
 def _blender_bin(config: dict[str, Any]) -> str:
-    return config.get("paths", {}).get("blender", "blender")
+    blender = str(config.get("paths", {}).get("blender") or "blender")
+    if Path(blender).is_file() or shutil.which(blender):
+        return blender
+    raise RuntimeError(
+        "未找到 Blender，3D 模式无法渲染。2D 模式不需要 Blender。"
+        "请安装后把 blender 加入 PATH，或在 config.yaml 的 paths.blender 填写可执行文件路径。"
+    )
 
 
 def render_scene_clip(

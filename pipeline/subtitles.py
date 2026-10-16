@@ -5,6 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from pipeline.fonts import resolve_ass_font_name
+
 
 def _format_ts_srt(seconds: float) -> str:
     if seconds < 0:
@@ -114,7 +116,10 @@ def build_ass_from_scenes(
     video = (config or {}).get("video", {})
     width = int(video.get("width", 1080))
     height = int(video.get("height", 1920))
-    font_name = sub.get("font_name", "Microsoft YaHei")
+    preferred_font = sub.get("font_name", "Microsoft YaHei")
+    font_name = resolve_ass_font_name(str(preferred_font))
+    if font_name != preferred_font:
+        print(f"[subtitles] 系统没有字体 {preferred_font}，ASS 改用 {font_name}")
     font_size = int(sub.get("font_size", 36))
     margin_v = int(sub.get("margin_v", 260))
     margin_l = int(sub.get("margin_l", 72))
