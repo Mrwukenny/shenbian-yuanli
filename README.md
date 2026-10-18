@@ -94,17 +94,24 @@ python -m pipeline.run_episode --id 001-air-conditioner --reuse-audio --mode 2d
 |------|------|
 | `config.yaml` | 分辨率、音色、Blender/FFmpeg 路径 |
 | `episodes/*/episode.yaml` | 单集旁白与分镜 |
+| `templates/2d/` | 2D 分镜，模块名对应 `template_2d`，需提供 `draw_scene` |
 | `templates/blender/` | 3D 场景模板 |
 | `pipeline/` | TTS / 字幕 / 渲染 / 合成 |
 | `docs/series_bible.md` | 系列调性 |
 | `docs/douyin_publish.md` | 发布文案模板 |
 
+## 分集队列
+
+`episodes/` 按目录名排序。每日自动发布取这里尚未出片的下一集。
+
+当前下一集：**`episodes/011-air-fryer`**（空气炸锅，`template_2d: air_fryer_scenes`）。001–010 已有成稿，不要改它们的文案。
+
 ## 新增一集怎么做
 
-1. 复制 `episodes/001-air-conditioner` 为新目录（如 `002-fridge`）
-2. 改 `episode.yaml` 的标题、旁白、`blender_scene` 名
-3. 在 `templates/blender/` 增加对应场景构建函数，并在 `SCENE_BUILDERS` 注册
-4. 运行：`python -m pipeline.run_episode --id 002-fridge`
+1. 复制上一集目录（例如把 `010-induction-cooker` 拷成 `011-air-fryer`）
+2. 改 `episode.yaml` 的标题、旁白、`template_2d`
+3. 在 `templates/2d/` 增加同名场景模块，并导出 `draw_scene`。只有 `--mode 3d` 才要在 `templates/blender/` 注册 `SCENE_BUILDERS`
+4. 运行：`python -m pipeline.run_episode --id 011-air-fryer --mode 2d`
 
 文案节奏参考：`templates/script_style.md`。
 
