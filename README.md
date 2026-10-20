@@ -104,14 +104,24 @@ python -m pipeline.run_episode --id 001-air-conditioner --reuse-audio --mode 2d
 
 `episodes/` 按目录名排序。每日自动发布取这里尚未出片的下一集。
 
-当前下一集：**`episodes/012-water-purifier`**（净水器，`template_2d: water_purifier_scenes`）。001–011 已有成稿，不要改它们的文案。
+001–012 已有成稿，不要改它们的文案。若 012 还没有成片，下一集仍是 **`episodes/012-water-purifier`**（净水器，`template_2d: water_purifier_scenes`）。
+
+012 之后按顺序排期，避免当天队列被抽空：
+
+| 目录 | 主题 | `template_2d` |
+|------|------|----------------|
+| `episodes/013-electric-oven` | 电烤箱 | `electric_oven_scenes` |
+| `episodes/014-electric-kettle` | 电热水壶 | `electric_kettle_scenes` |
+| `episodes/015-dishwasher` | 洗碗机 | `dishwasher_scenes` |
+| `episodes/016-electric-fan` | 电风扇 | `electric_fan_scenes` |
+| `episodes/017-humidifier` | 加湿器 | `humidifier_scenes` |
 
 ## 新增一集怎么做
 
-1. 复制上一集目录（例如把 `011-air-fryer` 拷成 `012-water-purifier`）
+1. 复制上一集目录（例如把 `017-humidifier` 拷成下一集）
 2. 改 `episode.yaml` 的标题、旁白、`template_2d`
 3. 在 `templates/2d/` 增加同名场景模块，并导出 `draw_scene`。只有 `--mode 3d` 才要在 `templates/blender/` 注册 `SCENE_BUILDERS`
-4. 运行：`python -m pipeline.run_episode --id 012-water-purifier --mode 2d`
+4. 运行：`python -m pipeline.run_episode --id <新集目录名> --mode 2d`
 
 文案节奏参考：`templates/script_style.md`。
 
