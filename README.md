@@ -135,10 +135,15 @@ python -m pipeline.run_episode --id 001-air-conditioner --reuse-audio --mode 2d
 | `episodes/035-projector` | 投影仪 | `projector_scenes` |
 | `episodes/036-wifi-router` | 路由器 | `wifi_router_scenes` |
 | `episodes/037-juicer` | 榨汁机 | `juicer_scenes` |
+| `episodes/038-floor-washer` | 洗地机 | `floor_washer_scenes` |
+| `episodes/039-water-dispenser` | 饮水机 | `water_dispenser_scenes` |
+| `episodes/040-electric-blanket` | 电热毯 | `electric_blanket_scenes` |
+| `episodes/041-smart-lock` | 智能门锁 | `smart_lock_scenes` |
+| `episodes/042-television` | 电视 | `television_scenes` |
 
 ## 新增一集怎么做
 
-1. 复制上一集目录（例如把 `037-juicer` 拷成下一集）
+1. 复制上一集目录（例如把 `042-television` 拷成下一集）
 2. 改 `episode.yaml` 的标题、旁白、`template_2d`
 3. 在 `templates/2d/` 增加同名场景模块，并导出 `draw_scene`。只有 `--mode 3d` 才要在 `templates/blender/` 注册 `SCENE_BUILDERS`
 4. 运行：`python -m pipeline.run_episode --id <新集目录名> --mode 2d`
