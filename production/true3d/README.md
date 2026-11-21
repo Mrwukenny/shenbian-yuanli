@@ -51,8 +51,8 @@ node production/true3d/node_modules/hyperframes/bin/hyperframes.mjs snapshot \
 旁白与混音（会访问 edge-tts，不走付费 API）。批准的时间戳已经在 `narration_timings.json`，不要随手覆盖。
 
 ```bash
-python3 episodes/044-water-flosser/true3d/tools/generate_voice.py
-python3 episodes/044-water-flosser/true3d/tools/prepare_media.py
+python3 episodes/044-water-flosser/true3d/bin/generate_voice.py
+python3 episodes/044-water-flosser/true3d/bin/prepare_media.py
 ```
 
 `generate_voice.py` 只在加上 `--update-timings` 时才改写批准时间戳。`prepare_media.py` 会按当前旁白重写字幕，确认时长仍是 39 句、约 191.2 秒再保留。
@@ -60,7 +60,7 @@ python3 episodes/044-water-flosser/true3d/tools/prepare_media.py
 封面要用 QA 先导出透明机身图。已提交的 `covers/*.jpg` 是批准稿，默认不覆盖。
 
 ```bash
-python3 episodes/044-water-flosser/true3d/tools/make_covers.py --force
+python3 episodes/044-water-flosser/true3d/bin/make_covers.py --force
 ```
 
 两秒样片，用来确认编码，不要当成成片：
@@ -80,7 +80,7 @@ node production/true3d/node_modules/hyperframes/bin/hyperframes.mjs render \
   --fps 30 --quality delivery --crf 18 --workers 1 --no-browser-gpu \
   -o episodes/044-water-flosser/true3d/renders/visual.mp4
 
-python3 episodes/044-water-flosser/true3d/tools/export_film.py \
+python3 episodes/044-water-flosser/true3d/bin/export_film.py \
   --visual episodes/044-water-flosser/true3d/renders/visual.mp4
 ```
 
