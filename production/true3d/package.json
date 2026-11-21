@@ -1,0 +1,12 @@
+{
+  "name": "shenbian-yuanli-true3d",
+  "private": true,
+  "description": "Local true-3D render dependencies for 身边原理. Not published. node_modules is not committed.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource/noto-sans-sc": "5.3.1",
+    "gsap": "3.15.1",
+    "hyperframes": "0.9.74",
+    "three": "0.181.2"
+  }
+}

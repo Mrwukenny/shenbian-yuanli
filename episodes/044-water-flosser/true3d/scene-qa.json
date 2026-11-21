@@ -1,0 +1,432 @@
+{
+  "kinematics": true,
+  "deterministic": true,
+  "errors": [],
+  "frames": [
+    {
+      "t": 2,
+      "time": 2,
+      "meshCount": 201,
+      "triangles": 28308,
+      "pump": {
+        "theta": 0.86,
+        "slider": 0.4081873297837998,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.5195125063671896,
+          0.1515685125790554,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "冲牙器，把水变成脉冲",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 22,
+      "time": 22,
+      "meshCount": 201,
+      "triangles": 30708,
+      "pump": {
+        "theta": 3.176814692820413,
+        "slider": 0.09009766134750652,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.8498759536202852,
+          -0.007042951397077529,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "真正的主角，是电机和泵",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 37,
+      "time": 37,
+      "meshCount": 201,
+      "triangles": 29060,
+      "pump": {
+        "theta": 3.3436293856408277,
+        "slider": 0.09321089415243877,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.8459319818268145,
+          -0.040133010071720605,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "水从哪里来，又往哪里去？",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 44,
+      "time": 44,
+      "meshCount": 201,
+      "triangles": 28260,
+      "pump": {
+        "theta": 0.07044407846123946,
+        "slider": 0.4893985546741738,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.450496031643816,
+          0.014077166267921963,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "水从哪里来，又往哪里去？",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 58,
+      "time": 58,
+      "meshCount": 201,
+      "triangles": 11168,
+      "pump": {
+        "theta": 6.090444078461243,
+        "slider": 0.4855155749233221,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.4537034318426033,
+          -0.038310016048397864,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "把转动，变成活塞往复",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 68,
+      "time": 68,
+      "meshCount": 201,
+      "triangles": 9568,
+      "pump": {
+        "theta": 1.4237980348710444,
+        "slider": 0.2982379233215695,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.6207061076872988,
+          0.19784303847538298,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "第一步：泵腔变大，吸水",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 80,
+      "time": 80,
+      "meshCount": 201,
+      "triangles": 11168,
+      "pump": {
+        "theta": 4.8980957398413745,
+        "slider": 0.306147305264027,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.6130717625961617,
+          -0.19656119983925047,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "第二步：泵腔变小，压水",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 92,
+      "time": 92,
+      "meshCount": 201,
+      "triangles": 9568,
+      "pump": {
+        "theta": 1.8608881569224849,
+        "slider": 0.2130488551599321,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.7072080439112752,
+          0.1916435224886185,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "第三步：细喷嘴集中水流",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 103,
+      "time": 103,
+      "meshCount": 201,
+      "triangles": 9568,
+      "pump": {
+        "theta": 0.3077028497428955,
+        "slider": 0.4786526245599718,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.4593936355777062,
+          0.0605740360362072,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "脉冲，来自泵的周期工作",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 119,
+      "time": 119,
+      "meshCount": 201,
+      "triangles": 11896,
+      "pump": {
+        "theta": 0.9045175425633118,
+        "slider": 0.40037086596598714,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.5263870150609515,
+          0.15722541128729345,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "第四步：接触，然后带走",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 126,
+      "time": 126,
+      "meshCount": 201,
+      "triangles": 11896,
+      "pump": {
+        "theta": 3.91451754256331,
+        "slider": 0.13639489344870004,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.7931742966757307,
+          -0.13964641338541373,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "辅助清洁，不是包办清洁",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 135,
+      "time": 135,
+      "meshCount": 201,
+      "triangles": 12064,
+      "pump": {
+        "theta": 1.501332235383721,
+        "slider": 0.28246354450558775,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.6361183517658855,
+          0.199517667995354,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "牙结石，不靠调高挡冲掉",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 146,
+      "time": 146,
+      "meshCount": 201,
+      "triangles": 12064,
+      "pump": {
+        "theta": 6.231332235383725,
+        "slider": 0.48967402839274154,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.450268813866462,
+          -0.0103659676678055,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "溅得多，不代表清得全",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 155,
+      "time": 155,
+      "meshCount": 201,
+      "triangles": 12064,
+      "pump": {
+        "theta": 3.8181469282041434,
+        "slider": 0.12567499709297802,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.8059469492967357,
+          -0.12522199888614363,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "低挡起步，沿牙龈线移动",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 166,
+      "time": 166,
+      "meshCount": 201,
+      "triangles": 6624,
+      "pump": {
+        "theta": 2.264961621024547,
+        "slider": 0.14939733699453916,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.7779488235319432,
+          0.15371759351743597,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "疼痛或持续出血，先停用",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 176,
+      "time": 176,
+      "meshCount": 201,
+      "triangles": 28308,
+      "pump": {
+        "theta": 0.2817763138449578,
+        "slider": 0.4804660854946417,
+        "inletOpen": true,
+        "outletOpen": false,
+        "crankPin": [
+          -0.4578873944000165,
+          0.055612469551218395,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "电机带泵，单向控流",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    },
+    {
+      "t": 188,
+      "time": 188,
+      "meshCount": 201,
+      "triangles": 30708,
+      "pump": {
+        "theta": 5.441776313844969,
+        "slider": 0.41137970549041203,
+        "inletOpen": false,
+        "outletOpen": true,
+        "crankPin": [
+          -0.5167174067097,
+          -0.14911656623531963,
+          0.625
+        ],
+        "rodLength": 0.94,
+        "flowDirection": "reservoir -> inlet -> chamber -> outlet -> nozzle"
+      },
+      "title": "下一个，你还想拆什么？",
+      "fontSize": "63px",
+      "titleWidth": 880,
+      "titleScrollWidth": 880,
+      "titleBottom": 330.59375,
+      "subtitleTop": 343
+    }
+  ]
+}

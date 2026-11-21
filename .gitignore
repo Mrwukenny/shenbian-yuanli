@@ -16,5 +16,12 @@ episodes/*/output/*
 *.mp4
 *.mp3
 *.wav
+.hyperframes/
+production/true3d/node_modules/
+episodes/*/true3d/assets/vendor/
+episodes/*/true3d/assets/fonts/
+episodes/*/true3d/assets/audio/
+episodes/*/true3d/renders/
+episodes/*/true3d/artifacts/
 .DS_Store
 Thumbs.db

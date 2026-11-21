@@ -1,0 +1,48 @@
+{
+  "episode": "044-water-flosser",
+  "authoring_mode": "atelier",
+  "render_runtime": "hyperframes",
+  "pipeline": "animation / continuing Ken animated-explainer series",
+  "three_version": "0.181.2",
+  "hyperframes_version": "0.9.74",
+  "geometry": "original local Three.js meshes in model.js; no kettle geometry or prior 2D scene modules",
+  "scene_mesh_count": 201,
+  "sampled_drawn_triangles": [
+    6624,
+    30708
+  ],
+  "fidelity": "illustrative teaching schematic, not photoreal or a product-specific teardown",
+  "color_semantics": {
+    "motor": "amber",
+    "mechanical_linkage": "violet",
+    "fluid": "cyan",
+    "check_valves": "gold"
+  },
+  "mechanical_qa": "360 crank angles; exact slider-crank rod length and mutually exclusive check-valve phases",
+  "flow_direction": "reservoir -> inlet valve -> pump chamber -> outlet valve -> nozzle -> tooth surfaces -> downward drainage",
+  "oral_health_claims": "adjunct cleaning of accessible sites only; not a brush/professional-care replacement or treatment; no pressure/efficacy numbers",
+  "external_paid_apis": false,
+  "music": "original synthesized ambient chord pad, not commercial stock",
+  "voice": {
+    "engine": "edge-tts",
+    "name": "zh-CN-YunjianNeural",
+    "rate": "+0%",
+    "gap_ms": 280,
+    "duration_seconds": 190.952
+  },
+  "sources": "sources.json",
+  "read_only_intent_reference": "episodes/044-water-flosser/episode.yaml",
+  "covers": {
+    "method": "dedicated transparent 3D asset rendered at original cover pose + authored PIL type/gradient/vector layouts, not a film screenshot",
+    "cover_text": "Ken带你拆冲牙器",
+    "vertical": [
+      1080,
+      1440
+    ],
+    "horizontal": [
+      1440,
+      1080
+    ]
+  },
+  "skill_sources_note": "OpenMontage skill files were consulted while authoring and are not vendored in this repository."
+}

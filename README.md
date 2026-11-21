@@ -95,7 +95,9 @@ python -m pipeline.run_episode --id 001-air-conditioner --reuse-audio --mode 2d
 | `config.yaml` | 分辨率、音色、Blender/FFmpeg 路径 |
 | `episodes/*/episode.yaml` | 单集旁白与分镜 |
 | `templates/2d/` | 2D 分镜，模块名对应 `template_2d`，需提供 `draw_scene` |
-| `templates/blender/` | 3D 场景模板 |
+| `templates/blender/` | 旧的 Blender 3D 模板。`--mode 3d` 仍走这里 |
+| `production/true3d/` | 044 起的真三维依赖和命令。目前只有 044 有成片工程 |
+| `episodes/044-water-flosser/true3d/` | 已批准、尚未发布的冲牙器真三维源文件 |
 | `pipeline/` | TTS / 字幕 / 渲染 / 合成 |
 | `docs/series_bible.md` | 系列调性 |
 | `docs/douyin_publish.md` | 发布文案模板 |
@@ -140,10 +142,25 @@ python -m pipeline.run_episode --id 001-air-conditioner --reuse-audio --mode 2d
 | `episodes/040-electric-blanket` | 电热毯 | `electric_blanket_scenes` |
 | `episodes/041-smart-lock` | 智能门锁 | `smart_lock_scenes` |
 | `episodes/042-television` | 电视 | `television_scenes` |
+| `episodes/043-electric-steamer` | 电蒸锅 | `electric_steamer_scenes` |
+| `episodes/044-water-flosser` | 冲牙器 | `water_flosser_scenes`（2D 后备；批准稿是真三维） |
+| `episodes/045-smart-drying-rack` | 电动晾衣架 | `smart_drying_rack_scenes` |
+| `episodes/046-mite-vacuum` | 除螨仪 | `mite_vacuum_scenes` |
+| `episodes/047-led-desk-lamp` | 台灯 | `led_desk_lamp_scenes` |
+
+001–043 保持原来的 2D 成片，不要改它们的文案。044 起的发布标准改为真三维（Three.js 0.181.2 + HyperFrames 0.9.74，1080×1920、30 fps）。**现在只有 044 冲牙器有已批准的真三维工程**，在 `episodes/044-water-flosser/true3d/`。045–047 仍是上表里的 2D 稿，还没有三维模型，也不要写成已经三维化。
+
+044 已于 2026-11-21 12:56（Asia/Shanghai）批准用于当晚 18:05，但仓库里的状态是「已批准、未发布」。2D 命令不受影响：
+
+```bash
+python -m pipeline.run_episode --id 044-water-flosser --mode 2d
+```
+
+真三维的安装、抽帧、配音和全片命令写在 `production/true3d/README.md`。全片 MP4 不进 git。
 
 ## 新增一集怎么做
 
-1. 复制上一集目录（例如把 `042-television` 拷成下一集）
+1. 复制上一集目录（例如把 `047-led-desk-lamp` 拷成下一集）
 2. 改 `episode.yaml` 的标题、旁白、`template_2d`
 3. 在 `templates/2d/` 增加同名场景模块，并导出 `draw_scene`。只有 `--mode 3d` 才要在 `templates/blender/` 注册 `SCENE_BUILDERS`
 4. 运行：`python -m pipeline.run_episode --id <新集目录名> --mode 2d`
