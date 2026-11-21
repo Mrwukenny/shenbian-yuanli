@@ -4,6 +4,20 @@ cover_text: Ken带你拆冲牙器
 core_question: 冲牙器靠什么把碎屑冲走？
 duration_target_sec: 180
 template_2d: water_flosser_scenes
+true3d:
+  standard: approved
+  published: false
+  approved_at: "2026-11-21T12:56:00+08:00"
+  slot: "2026-11-21 18:05 Asia/Shanghai"
+  entry: true3d/index.html
+  duration_sec: 191.2
+  width: 1080
+  height: 1920
+  fps: 30
+  voice: zh-CN-YunjianNeural
+  rate: "+0%"
+  gap_ms: 280
+  note: 已批准的真三维成片在 true3d/。下面的 scenes 仍是 2D 后备稿，不是这份批准旁白。批准不等于已发布。
 tags:
   - 身边原理
   - 科普
@@ -14,14 +28,15 @@ tags:
 douyin:
   title: 身边原理｜我是Ken，挑战每天用3分钟带你了解冲牙器
   description: |
-    我是Ken，挑战每天用3分钟带你了解一个身边原理，今天：冲牙器。
+    我是Ken，挑战每天用3分钟带你了解一个身边原理，今天：冲牙器靠什么把碎屑冲走。
 
-    本集拆解：
-    1. 小水泵一下一下，把水箱里的水推出细喷嘴
-    2. 脉冲只打到水够得着的空隙
-    3. 调高挡是推得更用力。这集不把功效当成结论
+    电机一直转，水为什么一股一股？这次用三维结构，跟着水箱、单向阀、活塞泵和细喷嘴，走完这条水路。
 
-    系列：身边原理｜每天带你多懂一个原理
+    记住口诀：电机带泵，单向控流，细嘴出水，清洁靠接触。
+
+    视频使用代表性活塞泵结构示意，动作已放慢，不代表所有机型。冲牙器是日常口腔清洁的辅助，不能代替刷牙和专业口腔护理；疼痛或持续出血时应停用并咨询牙医。
+
+    关注身边原理，你还想接着拆哪个家电？
     #身边原理 #科普 #冲牙器原理 #脉冲水流 #抖音知识
 
 scenes:

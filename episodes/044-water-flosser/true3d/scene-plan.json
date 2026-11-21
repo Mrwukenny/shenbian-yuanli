@@ -1,0 +1,62 @@
+[
+  {
+    "id": "hero",
+    "start": 0,
+    "end": 30.816,
+    "duration": 30.816
+  },
+  {
+    "id": "exploded_water_path",
+    "start": 30.816,
+    "end": 52.4,
+    "duration": 21.584
+  },
+  {
+    "id": "motor_and_slider_crank",
+    "start": 52.4,
+    "end": 61.96,
+    "duration": 9.56
+  },
+  {
+    "id": "step_1_intake",
+    "start": 61.96,
+    "end": 75.064,
+    "duration": 13.104
+  },
+  {
+    "id": "step_2_compression",
+    "start": 75.064,
+    "end": 88.24,
+    "duration": 13.176
+  },
+  {
+    "id": "step_3_nozzle_and_pulsation",
+    "start": 88.24,
+    "end": 111.336,
+    "duration": 23.096
+  },
+  {
+    "id": "step_4_contact_cleaning",
+    "start": 111.336,
+    "end": 137.912,
+    "duration": 26.576
+  },
+  {
+    "id": "splash_not_coverage",
+    "start": 137.912,
+    "end": 152.384,
+    "duration": 14.472
+  },
+  {
+    "id": "safe_use_and_adjunct_limits",
+    "start": 152.384,
+    "end": 173.808,
+    "duration": 21.424
+  },
+  {
+    "id": "mnemonic_and_Ken_close",
+    "start": 173.808,
+    "end": 191.2,
+    "duration": 17.392
+  }
+]

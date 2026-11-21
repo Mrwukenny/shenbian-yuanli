@@ -1,0 +1,34 @@
+{
+  "episode": "044-water-flosser",
+  "review_status": "approved",
+  "approved_at": "2026-11-21T12:56:00+08:00",
+  "approved_for_slot": "2026-11-21 18:05 Asia/Shanghai",
+  "publication_status": "not_published",
+  "send_or_publish_authorized": false,
+  "note": "用户批准的是这份真三维成片，供当晚档期使用。本仓库同步源文件，不代表已经发到抖音。",
+  "duration_seconds": 191.2,
+  "frame": { "width": 1080, "height": 1920, "fps": 30, "frames": 5736 },
+  "narration": {
+    "voice": "zh-CN-YunjianNeural",
+    "rate": "+0%",
+    "gap_ms": 280,
+    "segments": 39,
+    "pcm_duration_seconds": 190.952
+  },
+  "render": {
+    "engine": "Three.js 0.181.2",
+    "composition": "HyperFrames 0.9.74",
+    "compat_profile": "H.264 Constrained Baseline, yuv420p, 0 B-frames, AAC 48 kHz stereo, faststart",
+    "measured_lufs": -16.06,
+    "measured_true_peak_dbtp": -1.77
+  },
+  "film_sha256_not_in_git": {
+    "master": "b475f3fe387a442fd7ae0daff914226b7e25912d127d875631931086fb11f7f7",
+    "compat": "37d0000db06a2070c2b4bba01d51419ecbc003d06d98586b988b864f3369c473"
+  },
+  "limits": [
+    "代表性活塞泵，放大并重排，不是某品牌剖面。",
+    "动作放慢，不是流体、压力或临床模拟。",
+    "045–047 还没有真三维工程。"
+  ]
+}
